@@ -33,13 +33,8 @@ namespace PdfClown.Documents.Contents.Composition
     /// <summary>Text fitter.</summary>
     public sealed partial class TextFitter
     {
-#if NET7_0_OR_GREATER
         [GeneratedRegex(@"(\s*)(\S*)", RegexOptions.CultureInvariant)]
         private static partial Regex GetFitPattern();
-#else
-        private static readonly Regex fitPattern = new Regex(@"(\s*)(\S*)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static Regex GetFitPattern() => fitPattern;
-#endif
         private readonly PdfFont font;
         private readonly double fontSize;
         private readonly bool hyphenation;

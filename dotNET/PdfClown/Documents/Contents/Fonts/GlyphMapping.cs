@@ -38,13 +38,9 @@ namespace PdfClown.Documents.Contents.Fonts
     /// [PDF:1.6:D;AGL:2.0].</summary>
     public partial class GlyphMapping
     {
-#if NET7_0_OR_GREATER
         [GeneratedRegex(@"^(\w+);([A-F0-9 ]+)$", RegexOptions.CultureInvariant)]
         private static partial Regex GetLinePattern();
-#else
-        private static Regex linePattern = new Regex(@"^(\w+);([A-F0-9 ]+)$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private static Regex GetLinePattern() => linePattern;
-#endif
+
         public static readonly GlyphMapping Default = new GlyphMapping("AGL20", 4300);
         public static readonly GlyphMapping ZapfDingbats = new GlyphMapping("ZapfDingbats", 210);
         public static readonly GlyphMapping DLFONT = new GlyphMapping("G500", 100);

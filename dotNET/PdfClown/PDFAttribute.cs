@@ -27,9 +27,7 @@ using System;
 
 namespace PdfClown
 {
-    /**
-      <summary>Indicates the PDF compatibility level of the annotated element.</summary>
-    */
+    /// <summary>Indicates the PDF compatibility level of the annotated element.</summary>
     [AttributeUsage(AttributeTargets.All)]
     public class PDFAttribute : Attribute
     {
@@ -38,9 +36,7 @@ namespace PdfClown
         public PDFAttribute(VersionEnum value)
         { this.value = value; }
 
-        /**
-          <summary>Gets the compatible version (minimum PDF version supporting the annotated element).</summary>
-        */
+        /// <summary>Gets the compatible version (minimum PDF version supporting the annotated element).</summary>
         public VersionEnum Value => value;
     }
 }

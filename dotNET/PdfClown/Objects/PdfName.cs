@@ -44,17 +44,11 @@ namespace PdfClown.Objects
         //  - delimiters;
         //  - whitespaces;
         //  - '#' (number sign character).
-#if NET7_0_OR_GREATER
         [GeneratedRegex("#([\\da-fA-F]{2})", RegexOptions.CultureInvariant)]
         private static partial Regex GetEscapedPattern();
         [GeneratedRegex("[\\s\\(\\)<>\\[\\]{}/%#]", RegexOptions.CultureInvariant)]
         private static partial Regex GetUnescapedPattern();
-#else
-        private static readonly Regex escapedPattern = new("#([\\da-fA-F]{2})", RegexOptions.Compiled);
-        private static readonly Regex unescapedPattern = new("[\\s\\(\\)<>\\[\\]{}/%#]", RegexOptions.Compiled);
-        private static Regex GetEscapedPattern() => escapedPattern;
-        private static Regex GetUnescapedPattern() => unescapedPattern;
-#endif
+
         private static readonly byte[] NamePrefixChunk = Tokens.BaseEncoding.Pdf.Encode(Keyword.NamePrefix);
         private static readonly ConcurrentDictionary<string, PdfName> names = new(Environment.ProcessorCount, 800, StringComparer.Ordinal);
 

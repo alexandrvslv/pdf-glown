@@ -69,9 +69,9 @@ namespace PdfClown.Documents.Interaction.Actions
                     {
                         objectsDataObject.Add(annotation.Reference);
                     }
-                    else if (item is Field field)
+                    else if (item is Field fieldItem)
                     {
-                        objectsDataObject.Add(field.FullName);
+                        objectsDataObject.Add(fieldItem.FullName);
                     }
                     else
                     {

@@ -71,13 +71,10 @@ namespace PdfClown.Documents
         private static readonly string IsoSeriesSize_A = "A";
         private static readonly string IsoSeriesSize_B = "B";
         private static readonly string IsoSeriesSize_C = "C";
-#if NET7_0_OR_GREATER
+
         [GeneratedRegex("([ABC])([\\d]+)", RegexOptions.CultureInvariant)]
         private static partial Regex GetIsoSeriesSizePattern();
-#else
-        private static readonly Regex isoSeriesSizePattern = new Regex("([ABC])([\\d]+)", RegexOptions.Compiled);
-        private static Regex GetIsoSeriesSizePattern() => isoSeriesSizePattern;
-#endif
+
         /// <summary>Gets the default page size.</summary>
         /// <remarks>The returned dimension corresponds to the widely-established ISO A4 standard paper
         /// format, portrait orientation.</remarks>
