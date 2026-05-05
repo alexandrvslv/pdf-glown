@@ -19,6 +19,6 @@ packages/
 .vs/
 .vscode/
 main/res/samples/input/pdf/work/temp/
-dotNET/PdfClown.Samples/output/
-dotNET/PdfClown.Samples/build/
-dotNET/PdfClown/build/
+dotNET/PdfGlown.Samples/output/
+dotNET/PdfGlown.Samples/build/
+dotNET/PdfGlown/build/
