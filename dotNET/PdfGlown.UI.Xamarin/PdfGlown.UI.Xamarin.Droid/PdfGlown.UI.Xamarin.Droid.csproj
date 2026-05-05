@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net7.0-android</TargetFrameworks>
+    <AssemblyTitle>PdfGlown.UI.Droid</AssemblyTitle>
+    <Product>PdfGlown.UI.Droid</Product>
+    <Copyright>Copyright ©  2014</Copyright>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PdfGlown.UI.Xamarin\PdfGlown.UI.Xamarin.csproj" />
+  </ItemGroup>   
+</Project>

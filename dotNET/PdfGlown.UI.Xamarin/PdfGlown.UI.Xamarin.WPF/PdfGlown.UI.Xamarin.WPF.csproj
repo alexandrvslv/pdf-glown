@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>library</OutputType>
+    <AssemblyName>PdfGlown.UI.WPF</AssemblyName> 
+    <RootNamespace>PdfGlown.UI.WPF</RootNamespace>
+    <UseWpf>true</UseWpf>
+    <UseWindowsForms>true</UseWindowsForms>
+    <TargetFrameworks>net8.0-windows</TargetFrameworks>
+    <WarningLevel>4</WarningLevel>    
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp.Views.Forms.WPF" Version="2.88.9" />
+    <PackageReference Include="Xamarin.Forms.Platform.WPF" Version="5.0.0.2662" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PdfGlown.UI.Xamarin\PdfGlown.UI.Xamarin.csproj" />
+  </ItemGroup>  
+</Project>

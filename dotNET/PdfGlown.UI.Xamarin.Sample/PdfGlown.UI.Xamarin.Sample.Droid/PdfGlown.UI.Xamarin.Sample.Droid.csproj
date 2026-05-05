@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net7.0-android</TargetFrameworks>
+    <OutputType>Exe</OutputType>
+    <AssemblyTitle>PdfGlown.UI.Test.Droid</AssemblyTitle>
+    <Product>PdfGlown.UI.Test.Droid</Product>
+    <XamarinGoogleGuavaListenableFutureOptOut>true</XamarinGoogleGuavaListenableFutureOptOut>
+    <XamarinGoogleGuavaOptOut>true</XamarinGoogleGuavaOptOut>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IntermediateOutputPath>C:\DRD</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Standard.pdf" />
+    <EmbeddedResource Include="eastman.pdf" />
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PdfGlown.UI.Xamarin\PdfGlown.UI.Xamarin.Droid\PdfGlown.UI.Xamarin.Droid.csproj" />
+    <ProjectReference Include="..\PdfGlown.UI.Xamarin.Test\PdfGlown.UI.Xamarin.Test.csproj" />
+  </ItemGroup>  
+</Project>

@@ -4,7 +4,7 @@
   Contributors:
     * Alexandr Vassilyev (alexandr_vslv@mail.ru)
 
-  This file should be part of the source code distribution of "PDF Clown library" (the
+  This file should be part of the source code distribution of "PDF Glown library" (the
   Program): see the accompanying README files for more info.
 
   This Program is free software; you can redistribute it and/or modify it under the terms
@@ -25,7 +25,7 @@
 
 using System;
 using System.Runtime.InteropServices;
-using PdfClown.Bytes;
+using PdfGlown.Bytes;
 
 namespace ICCProfile
 {

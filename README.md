@@ -1,5 +1,5 @@
-# Pdf Clown - Skia Sharp
-https://sourceforge.net/projects/clown/ mirror.
+# Pdf Glown - Skia Sharp
+Fork of https://sourceforge.net/projects/clown/.
 
 ## Fork Task
 
@@ -40,7 +40,7 @@ https://sourceforge.net/projects/clown/ mirror.
   - JPX, CCITTFax, JBIG2 - decoding
 
 ## TODO
-- Release Nuget packages (maybe PdfClown.Skia, PdfClown.Skia.UI.Core, PdfClown.Skia.UI.Blazor)
+- Release Nuget packages (maybe PdfGlown.Skia, PdfGlown.Skia.UI.Core, PdfGlown.Skia.UI.Blazor)
 - Rendering
   - Streaming decode filters and optimization
   - Alpha Masking won't work correctly after my refactoring	  

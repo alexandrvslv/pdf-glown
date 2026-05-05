@@ -1,0 +1,19 @@
+<Application
+    x:Class="PdfGlown.UI.Aval.Sample.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PdfGlown.UI.Aval.Sample"
+    xmlns:pdfUI="using:PdfGlown.UI"
+    RequestedThemeVariant="Default">
+    <!--  "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options.  -->
+
+    <Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+    <Application.Resources>
+        <ResourceDictionary>
+            <local:PercentConverter x:Key="PercentConverter" />
+            <local:EnumBindingSourceExtension x:Key="PdfViewFitModes" x:TypeArguments="pdfUI:PdfViewFitMode" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

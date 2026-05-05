@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<DefineConstants>__FORCE_GL__</DefineConstants>
+	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+  </PropertyGroup>
+  <PropertyGroup>
+	<TypeScriptTarget>es2015</TypeScriptTarget>
+	<TypeScriptModuleKind>es2015</TypeScriptModuleKind>
+	<TypeScriptNoImplicitAny>True</TypeScriptNoImplicitAny>
+  </PropertyGroup>
+  <ItemGroup>
+	<SupportedPlatform Include="browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.3" />
+	  <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.8.1" PrivateAssets="all" />
+    <PackageReference Include="SkiaSharp.Views.Blazor" Version="3.119.4-preview.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PdfGlown.UI.Core\PdfGlown.UI.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(BuildingInsideVisualStudio)' != 'true'">
+	  <PackageReference Include="SkiaSharp.NativeAssets.WebAssembly" Version="3.119.4-preview.1.1" />
+  </ItemGroup>  
+</Project>
