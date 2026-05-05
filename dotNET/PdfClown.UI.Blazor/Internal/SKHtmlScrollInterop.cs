@@ -23,7 +23,8 @@ namespace PdfClown.UI.Blazor.Internal
         static partial void Init(string elementId,
             //[JSMarshalAs<JSType.Function<JSType.Array<JSType.Number>>>] Action<int[]> moveAction,
             [JSMarshalAs<JSType.Function<JSType.Object>>] Action<JSObject> moveAction,
-            [JSMarshalAs<JSType.Function<JSType.Number, JSType.Number>>] Action<double, double> sizeAction);
+            [JSMarshalAs<JSType.Function<JSType.Number, JSType.Number>>] Action<double, double> sizeAction,
+            [JSMarshalAs<JSType.Function<JSType.Number, JSType.Boolean>>] Action<double, bool> scrollAction);
 
         [JSImport(DeinitSymbol, ModuleName)]
         static partial void DeInit(string elementId);
@@ -67,17 +68,22 @@ namespace PdfClown.UI.Blazor.Internal
         private readonly string htmlElementId;
         private readonly Action<JSObject> moveCallback;
         private readonly Action<double, double> sizeCallback;
+        private readonly Action<double, bool> scrollCallback;
 
         public static async Task<SKHtmlScrollInterop> ImportAsync(IJSRuntime js, string elementId,
             Action<int[]> moveAction,
-            Action<double, double> sizeAction)
+            Action<double, double> sizeAction,
+            Action<double, bool> scrollAction)
         {
-            var interop = new SKHtmlScrollInterop(js, elementId, moveAction, sizeAction);
+            var interop = new SKHtmlScrollInterop(js, elementId, moveAction, sizeAction, scrollAction);
             await interop.ImportAsync();
             return interop;
         }
 
-        public SKHtmlScrollInterop(IJSRuntime js, string elementId, Action<int[]> moveAction, Action<double, double> sizeAction)
+        public SKHtmlScrollInterop(IJSRuntime js, string elementId,
+            Action<int[]> moveAction,
+            Action<double, double> sizeAction,
+            Action<double, bool> scrollAction)
             : base(js, ModuleName, JsFilename)
         {
             htmlElementId = elementId;
@@ -87,11 +93,12 @@ namespace PdfClown.UI.Blazor.Internal
                 moveAction(intArray);
             };
             sizeCallback = sizeAction;
+            scrollCallback = scrollAction;
         }
 
         protected override void OnDisposingModule() => DeInit();
 
-        public void Init() => Init(htmlElementId, moveCallback, sizeCallback);
+        public void Init() => Init(htmlElementId, moveCallback, sizeCallback, scrollCallback);
 
         public void RequestLock() => RequestLock(htmlElementId);
 

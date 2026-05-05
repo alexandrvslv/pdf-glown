@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
 	<DefineConstants>__FORCE_GL__</DefineConstants>
@@ -17,15 +17,15 @@
 	<SupportedPlatform Include="browser" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.3" />
-	<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.8.1" PrivateAssets="all" />
-    <PackageReference Include="SkiaSharp.Views.Blazor" Version="3.119.0-preview.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.3" />
+	  <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.8.1" PrivateAssets="all" />
+    <PackageReference Include="SkiaSharp.Views.Blazor" Version="3.119.4-preview.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PdfClown.UI.Core\PdfClown.UI.Core.csproj" />
   </ItemGroup>
   <ItemGroup Condition="'$(BuildingInsideVisualStudio)' != 'true'">
-	<PackageReference Include="SkiaSharp.NativeAssets.WebAssembly" Version="3.119.0-preview.1.2" />
+	  <PackageReference Include="SkiaSharp.NativeAssets.WebAssembly" Version="3.119.4-preview.1.1" />
   </ItemGroup>  
 </Project>

@@ -248,7 +248,7 @@ namespace PdfClown.UI.Blazor
             }
             if (e.KeyModifiers == KeyModifiers.Ctrl)
             {
-                Operations.ScaleToPointer(e.WheelDelta);
+                Operations.ScaleToPointer(-e.WheelDelta);
             }
         }
 

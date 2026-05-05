@@ -4,14 +4,16 @@ type SKHtmlScrollElement = {
 } & HTMLCanvasElement;
 type MoveActionFunction = (a: number[]) => void;
 type SizeActionFunction = (w: number, h: number) => void;
+type ScrollActionFunction = (w: number, control: boolean) => void;
 
 export class SKHtmlScroll {
     static elements: Map<string, SKHtmlScrollElement>;
     static observer: ResizeObserver;
     moveAction: MoveActionFunction;
     sizeAction: SizeActionFunction;
+    scrollAction: ScrollActionFunction;
 
-    public static init(elementId: string, moveAction: MoveActionFunction, sizeAction: SizeActionFunction) {
+    public static init(elementId: string, moveAction: MoveActionFunction, sizeAction: SizeActionFunction, scrollAction: ScrollActionFunction) {
         if (!SKHtmlScroll.elements) {
             SKHtmlScroll.elements = new Map<string, SKHtmlScrollElement>();
             SKHtmlScroll.observer = new ResizeObserver((entries) => {
@@ -27,7 +29,7 @@ export class SKHtmlScroll {
             return;
         }
         SKHtmlScroll.elements.set(elementId, scrollElement);
-        const view = new SKHtmlScroll(scrollElement, moveAction, sizeAction);
+        const view = new SKHtmlScroll(scrollElement, moveAction, sizeAction, scrollAction);
         scrollElement.SKHtmlScroll = view;
     }
 
@@ -37,28 +39,34 @@ export class SKHtmlScroll {
 
     public static deinit(elementId: string) {
         const element = SKHtmlScroll.elements.get(elementId);
-        SKHtmlScroll.elements.delete(elementId);
-        element.SKHtmlScroll.deconstruct(element);
+        if (element) {
+            SKHtmlScroll.elements.delete(elementId);
+            element.SKHtmlScroll.deconstruct(element);
+        }
     }
 
     public static requestLock(elementId: string) {
         const element = SKHtmlScroll.elements.get(elementId);
-        element.requestPointerLock();
+        if (element)
+            element.requestPointerLock();
     }
 
     public static setCapture(elementId: string, pointerId: number) {
         const element = SKHtmlScroll.elements.get(elementId);
-        element.setPointerCapture(pointerId);
+        if (element)
+            element.setPointerCapture(pointerId);
     }
 
     public static releaseCapture(elementId: string, pointerId: number) {
         const element = SKHtmlScroll.elements.get(elementId);
-        element.releasePointerCapture(pointerId);
+        if (element)
+            element.releasePointerCapture(pointerId);
     }
 
     public static changeCursor(elementId: string, cursorName: string) {
         const element = SKHtmlScroll.elements.get(elementId);
-        element.style.cursor = cursorName;
+        if (element)
+            element.style.cursor = cursorName;
     }
 
     static sizeAllocated(element: SKHtmlScrollElement) {
@@ -99,22 +107,31 @@ export class SKHtmlScroll {
         return result;
     }
 
-    public constructor(element: SKHtmlScrollElement, moveAction: any, sizeAction: any) {
+    public constructor(element: SKHtmlScrollElement, moveAction: MoveActionFunction, sizeAction: SizeActionFunction, scrollAction: ScrollActionFunction) {
         this.moveAction = moveAction;
         this.sizeAction = sizeAction;
-        element.addEventListener('pointermove', this.OnPointerMove);
+        this.scrollAction = scrollAction;
+        element.addEventListener('pointermove', this.onPointerMove);
+        element.addEventListener('wheel', this.onWeel);
         SKHtmlScroll.observer.observe(element);
     }
 
     deconstruct(element: SKHtmlScrollElement) {
-        element.removeEventListener('pointermove', this.OnPointerMove);
+        element.removeEventListener('pointermove', this.onPointerMove);
+        element.removeEventListener('wheel', this.onWeel);
         SKHtmlScroll.observer.unobserve(element);
     }
 
-    OnPointerMove = (e: PointerEvent) => {
+    onPointerMove = (e: PointerEvent) => {
         e.preventDefault();
         e.stopPropagation();
         this.moveAction([e.pointerId, SKHtmlScroll.getButton(e), e.offsetX, e.offsetY, SKHtmlScroll.getKeyModifiers(e)]);
+    }
+
+    onWeel = (e: WheelEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.scrollAction(e.deltaY, e.ctrlKey);
     }
 
 }

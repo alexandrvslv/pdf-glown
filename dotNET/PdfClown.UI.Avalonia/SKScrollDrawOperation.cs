@@ -39,7 +39,7 @@ internal class SKScrollDrawOperation : ICustomDrawOperation
             //lease.SkCanvas.ClipRect(Bounds.ToSKRect());
             var args = new SKPaintSurfaceEventArgs(lease.SkSurface, lease.SkCanvas);
             scrollView.OnPaintSurface(args);
-            lease.GrContext?.PurgeResources();
+            //lease.GrContext?.PurgeResources();
         }
     }
 }

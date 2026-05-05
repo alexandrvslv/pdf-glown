@@ -53,7 +53,7 @@ namespace PdfClown.Documents.Interaction.Forms
         { throw new NotImplementedException(); } // TODO:verify field reference.
 
         /// <summary>Gets the field associated to these widgets.</summary>
-        public Field Field => field;
+        public Field Field => this.field;
 
         public int IndexOf(Widget value)
         {

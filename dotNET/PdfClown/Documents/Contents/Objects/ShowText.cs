@@ -356,7 +356,11 @@ namespace PdfClown.Documents.Contents.Objects
                             var path = font.DrawChar(canvas, fill, stroke, textChar, code);
                             if (clip != null && path != null)
                             {
+#if NET10_0_OR_GREATER
+                                clip.AddPath(path, in trm);
+#else
                                 clip.AddPath(path, ref trm);
+#endif
                             }
                         }
 
@@ -459,11 +463,19 @@ namespace PdfClown.Documents.Contents.Objects
 
                         if (canvas != null && !(codeBytes.Length == 1 && textChar == ' '))
                         {
+#if NET10_0_OR_GREATER
+                            canvas.SetMatrix(in trm);
+#else
                             canvas.SetMatrix(trm);
+#endif
                             var path = font.DrawChar(canvas, fill, stroke, textChar, code);
                             if (clip != null && path != null)
                             {
+#if NET10_0_OR_GREATER
+                                clip.AddPath(path, in trm);
+#else
                                 clip.AddPath(path, ref trm);
+#endif
                             }
                         }
 

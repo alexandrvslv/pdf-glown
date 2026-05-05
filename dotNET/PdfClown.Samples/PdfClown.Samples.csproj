@@ -4,13 +4,13 @@
     <Platforms>AnyCPU</Platforms>
     <Version>0.2.1.0</Version>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>PdfClown.Samples.CLI</RootNamespace>
     <StartupObject>PdfClown.Samples.CLI.SampleLoader</StartupObject>
     <AssemblyName>PdfClownCLISamples</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.7" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PdfClown\PdfClown.csproj" />

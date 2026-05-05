@@ -126,7 +126,7 @@ namespace PdfClown.UI.Blazor
             await base.OnAfterRenderAsync(firstRender);
             if (firstRender)
             {
-                interop = await SKHtmlScrollInterop.ImportAsync(JS, CanvasId, OnPointerMove, OnSizeAllocated);
+                interop = await SKHtmlScrollInterop.ImportAsync(JS, CanvasId, OnPointerMove, OnSizeAllocated, OnMouseWheel);
                 interop.Init();
             }
         }
@@ -320,6 +320,16 @@ namespace PdfClown.UI.Blazor
         private static SKPoint GetMouseLocation(Microsoft.AspNetCore.Components.Web.TouchEventArgs e)
         {
             return new SKPoint((float)e.Touches[0].PageX, (float)e.Touches[0].PageY);
+        }
+
+        private void OnMouseWheel(double w, bool control)
+        {
+            OnScrolled(new TouchEventArgs(TouchAction.Released, MouseButton.Middle)
+            {
+                Location = new SKPoint(0,0),//  GetMouseLocation(e),
+                WheelDelta = (float)w,
+                KeyModifiers = control ? KeyModifiers.Ctrl : KeyModifiers.None,
+            });
         }
 
         private void OnMouseWheel(WheelEventArgs e)

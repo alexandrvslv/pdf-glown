@@ -4,7 +4,7 @@
     <OutputType>Library</OutputType>
     <AssemblyName>PdfClown</AssemblyName>
     <RootNamespace>PdfClown</RootNamespace>
-    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <Version>0.2.2.0</Version>
     <Company>Stefano Chizzolini</Company>
     <Product>PDF Clown for .NET Core</Product>
@@ -516,12 +516,12 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <PackageReference Include="BouncyCastle.Cryptography" Version="2.5.1" />
+    <PackageReference Include="BouncyCastle.Cryptography" Version="2.6.2" />
     <PackageReference Include="SharpZipLib" Version="1.4.2" />
     <PackageReference Include="SkiaSharp" Version="2.88.9" Condition="$(TargetFramework.StartsWith('net8.0'))" />
-	<PackageReference Include="SkiaSharp" Version="3.119.0-preview.1.2" Condition="$(TargetFramework.StartsWith('net9.0'))" />
-    <PackageReference Include="System.DirectoryServices.Protocols" Version="9.0.0" />
-    <PackageReference Include="System.Text.Encoding.CodePages" Version="9.0.3" />
+	  <PackageReference Include="SkiaSharp" Version="3.119.4-preview.1.1" Condition="$(TargetFramework.StartsWith('net10.0'))" />
+    <PackageReference Include="System.DirectoryServices.Protocols" Version="10.0.7" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="10.0.7" />
   </ItemGroup>
  
 </Project>

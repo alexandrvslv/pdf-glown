@@ -1,6 +1,8 @@
 ﻿
 <div @attributes="AdditionalAttributes">
-@{#if __FORCE_GL__}
+@{
+#if __FORCE_GL__
+}
     <SKGLView 
         @ref="canvasView" 
         id="@CanvasId" 
@@ -14,9 +16,10 @@
         @onpointerup="OnPointerUp"                  
         @onpointerenter="OnPointerEnter"
         @onpointerleave="OnPointerLeave"                                 
-        @onwheel="OnMouseWheel"                  
         @onkeydown="OnKeyDown"/>
-@{#else}
+@{
+#else
+}
     <SKCanvasView
         @ref="canvasView" 
         id="@CanvasId" 
@@ -30,9 +33,10 @@
         @onpointerup="OnPointerUp"                  
         @onpointerenter="OnPointerEnter"
         @onpointerleave="OnPointerLeave"                                 
-        @onwheel="OnMouseWheel"                  
         @onkeydown="OnKeyDown"/>
-@{#endif}
+@{
+#endif
+}
         
 </div>
 @* @onpointermove="OnPointerMove"
